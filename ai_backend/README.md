@@ -6,7 +6,7 @@
 
 本项目是一个纯后端API服务，为智能客服系统提供AI回复建议功能。支持RAG（检索增强生成）技术，能够从知识库中检索相关信息，生成更准确的客服回复建议。
 
-## 项目结构
+## 项目总架构
 
 ```
 cs_assist_ai/
@@ -53,7 +53,7 @@ backend/
 │   ├── embedding_service.py # 嵌入向量服务
 │   ├── rag_enhanced_service.py # RAG增强服务
 │   ├── vector_db_service.py # 向量数据库服务
-│   └── parent_child_retrieval.py
+│   └── parent_child_retrieval.py # 父子检索策略
 │
 ├── utils/                    # 工具函数
 │   ├── __init__.py
@@ -87,7 +87,7 @@ backend/
 
 ### 1. 环境要求
 
-- Python 3.8+
+- Python 3.8+（建议使用 python 3.10）
 - conda（推荐）或 virtualenv
 
 ### 2. 安装依赖

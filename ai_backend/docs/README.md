@@ -2,10 +2,16 @@
 
 本目录包含项目的所有技术文档和配置说明。
 
+## API 接口文档
+
+- **API_DOCUMENTATION.md** - API 接口文档（前端开发者必读）
+- **POSTMAN_GUIDE.md** - Postman 接口测试指南
+
 ## 配置文档
 
 - **CONFIG.md** - 环境变量配置说明
 - **EMBEDDING_SERVICE_README.md** - 嵌入服务使用说明
+- **ENV_FILE_GUIDE.md** - 环境变量文件说明
 
 ## 向量数据库文档
 
