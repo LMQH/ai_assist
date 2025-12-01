@@ -1,0 +1,51 @@
+{
+  "session_id": {
+    "chinese_names": ["会话ID"],
+    "description": "会话唯一标识"
+  },
+  "merged_message_content": {
+    "chinese_names": ["会话内容（不包含富文本标签）", "会话内容"],
+    "description": "合并后的会话消息内容"
+  },
+  "foreignId": {
+    "chinese_names": ["用户唯一标识"],
+    "description": "用户唯一标识"
+  },
+  "startTime": {
+    "chinese_names": ["会话开始时间"],
+    "description": "会话开始时间"
+  },
+  "endTime": {
+    "chinese_names": ["会话结束时间"],
+    "description": "会话结束时间"
+  },
+  "createTime": {
+    "chinese_names": ["客户接入时间"],
+    "description": "客户接入时间"
+  },
+  "userTags": {
+    "chinese_names": ["客户标签"],
+    "description": "客户标签"
+  },
+  "category": {
+    "chinese_names": ["一级分类"],
+    "description": "一级分类"
+  },
+  "closeReason": {
+    "chinese_names": ["会话结束原因"],
+    "description": "会话结束原因"
+  },
+  "roundNumber": {
+    "chinese_names": ["对话回合数"],
+    "description": "对话回合数"
+  },
+  "evaluation": {
+    "chinese_names": ["评价结果状态"],
+    "description": "评价结果状态"
+  },
+  "phone": {
+    "chinese_names": ["手机号"],
+    "description": "手机号"
+  }
+}
+

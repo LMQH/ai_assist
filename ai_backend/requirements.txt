@@ -1,0 +1,31 @@
+# Web框架
+fastapi==0.115.0
+uvicorn==0.32.0
+
+# 环境变量和配置
+python-dotenv==1.0.1
+
+# OpenAI客户端
+openai==1.57.0
+
+# 数据处理
+pandas==2.2.3
+openpyxl==3.1.5
+xlrd==2.0.1
+
+# 向量数据库
+pymilvus==2.4.9
+chromadb==0.5.23
+
+# RAG相关依赖
+ollama==0.4.0
+beautifulsoup4==4.12.3
+markdown==3.7
+requests==2.32.3
+json-repair==0.31.0
+
+# 嵌入服务相关依赖
+litellm>=1.0.0
+
+# 数据验证
+marshmallow>=3.18.0,<4.0.0

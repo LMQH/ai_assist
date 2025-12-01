@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "cs-assist-ai-collection",
+		"name": "CS Assist AI Backend",
+		"description": "智能客服助手后端服务 API 接口集合",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "核心接口",
+			"item": [
+				{
+					"name": "AI建议生成",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": \"customer_001\",\n  \"conversation\": [\n    {\n      \"role\": \"customer\",\n      \"content\": \"你好，我想咨询一下产品价格\",\n      \"sender\": null,\n      \"timestamp\": null\n    },\n    {\n      \"role\": \"agent\",\n      \"content\": \"您好，很高兴为您服务。请问您想了解哪个产品的价格呢？\",\n      \"sender\": \"客服小张\",\n      \"timestamp\": null\n    },\n    {\n      \"role\": \"customer\",\n      \"content\": \"我想了解一下你们的新款手机的价格\",\n      \"sender\": null,\n      \"timestamp\": null\n    }\n  ],\n  \"session_info\": {\n    \"id\": \"session_001\",\n    \"type\": \"personal\",\n    \"is_group\": false,\n    \"phone\": \"13800138000\",\n    \"last_message_time\": \"2024-01-01T10:00:00\"\n  },\n  \"customer_data\": {\n    \"type\": \"personal\",\n    \"phone\": \"13800138000\",\n    \"basic_info\": {\n      \"name\": \"张三\",\n      \"age\": 30\n    },\n    \"business_info\": {},\n    \"tags\": [\"VIP\", \"老客户\"],\n    \"service_history\": []\n  },\n  \"use_rag\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/suggest",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suggest"
+							]
+						},
+						"description": "根据对话历史和客户信息生成AI回复建议。支持RAG增强模式，可以从知识库检索相关信息。"
+					},
+					"response": []
+				},
+				{
+					"name": "提交反馈",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": \"customer_001\",\n  \"conversation\": [\n    {\n      \"role\": \"customer\",\n      \"content\": \"你好，我想咨询一下产品价格\",\n      \"sender\": null,\n      \"timestamp\": null\n    },\n    {\n      \"role\": \"agent\",\n      \"content\": \"您好，很高兴为您服务。请问您想了解哪个产品的价格呢？\",\n      \"sender\": \"客服小张\",\n      \"timestamp\": null\n    }\n  ],\n  \"suggestion\": \"感谢您的咨询，我们新款手机的价格是3999元，现在有优惠活动。\",\n  \"feedback\": \"positive\",\n  \"timestamp\": 1704067200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/feedback",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"feedback"
+							]
+						},
+						"description": "提交用户对AI建议的反馈。feedback字段可以是 \"positive\" 或 \"negative\"。"
+					},
+					"response": []
+				},
+				{
+					"name": "采纳建议",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": \"customer_001\",\n  \"conversation\": [\n    {\n      \"role\": \"customer\",\n      \"content\": \"你好，我想咨询一下产品价格\",\n      \"sender\": null,\n      \"timestamp\": null\n    },\n    {\n      \"role\": \"agent\",\n      \"content\": \"您好，很高兴为您服务。请问您想了解哪个产品的价格呢？\",\n      \"sender\": \"客服小张\",\n      \"timestamp\": null\n    }\n  ],\n  \"suggestion\": \"感谢您的咨询，我们新款手机的价格是3999元，现在有优惠活动。\",\n  \"session_info\": {\n    \"id\": \"session_001\",\n    \"type\": \"personal\",\n    \"is_group\": false,\n    \"phone\": \"13800138000\",\n    \"last_message_time\": \"2024-01-01T10:00:00\"\n  },\n  \"customer_data\": {\n    \"type\": \"personal\",\n    \"phone\": \"13800138000\",\n    \"basic_info\": {},\n    \"business_info\": {},\n    \"tags\": [],\n    \"service_history\": []\n  },\n  \"timestamp\": \"2024-01-01T10:05:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/accept",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"accept"
+							]
+						},
+						"description": "记录用户采纳的AI建议。用于统计和分析AI建议的使用情况。"
+					},
+					"response": []
+				}
+			],
+			"description": "核心业务接口"
+		},
+		{
+			"name": "RAG系统",
+			"item": [
+				{
+					"name": "获取RAG系统状态",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/rag/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rag",
+								"status"
+							]
+						},
+						"description": "获取RAG知识库和向量数据库的状态信息，包括知识库条目数量、向量数据库连接状态等。"
+					},
+					"response": []
+				}
+			],
+			"description": "RAG相关接口"
+		},
+		{
+			"name": "数据管理",
+			"item": [
+				{
+					"name": "重新加载Excel数据",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/excel/reload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"excel",
+								"reload"
+							]
+						},
+						"description": "重新加载Excel数据，刷新缓存。当Excel文件更新后，可以调用此接口刷新数据。"
+					},
+					"response": []
+				}
+			],
+			"description": "数据管理相关接口"
+		},
+		{
+			"name": "系统监控",
+			"item": [
+				{
+					"name": "健康检查",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "检查服务运行状态，包括Excel数据加载状态。"
+					},
+					"response": []
+				},
+				{
+					"name": "根路径",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "获取服务信息和可用接口列表。"
+					},
+					"response": []
+				}
+			],
+			"description": "系统监控相关接口"
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8003",
+			"type": "string"
+		}
+	]
+}
+
